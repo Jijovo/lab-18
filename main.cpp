@@ -4,7 +4,7 @@ using namespace std;
 
 //define review node
 struct Review {
-    int rating;
+    double rating;
     string comment;
     //constructor and next pointer
     public:
@@ -21,7 +21,7 @@ int main() {
     cin >> mode;
     cout << endl;
     //ask user for review
-    int r;
+    double r;
     string c;
     cout<< "Review 1:" << endl << "Enter rating (1-5): ";
     cin >> r;
@@ -52,15 +52,18 @@ int main() {
     //print linked list
     Review* current = head;
     int count = 1;
+    double sum = 0;
     cout << endl;
     while (current != nullptr) {
         cout << "Review " << count << ":" << endl;
         cout << "Rating: " << current->rating << endl;
         cout << "Comment: " << current->comment << endl;
-        cout << endl;
+        sum += current->rating;
         current = current->next;
         count++;
     }
+    //print average rating
+    cout << endl << "Average rating: " << sum / (count - 1) << endl;
 
     //delete linked list
     current = nullptr;
